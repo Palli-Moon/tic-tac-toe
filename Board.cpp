@@ -1,5 +1,16 @@
 #include "Board.h"
 
+Board::Board()
+{
+    initscr();
+    noecho();
+}
+
+Board::~Board()
+{
+    endwin();
+}
+
 void Board::draw_board()
 {
     for (int i = 1; i < 12; ++i)

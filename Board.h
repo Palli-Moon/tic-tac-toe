@@ -6,6 +6,8 @@
 class Board
 {
 public:
+    Board();
+    ~Board();
     void draw_board();
 };
 
