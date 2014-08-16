@@ -5,7 +5,6 @@ int main()
 {
     
     Board b;
-    b.draw_board();
 
     getch();
     return 0;

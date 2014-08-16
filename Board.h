@@ -16,8 +16,11 @@ class Board
 public:
     Board();
     ~Board();
-    void draw_board();
     void move_cursor(direction dir);
+private:
+    void draw_board();
+
+    int curr_y, curr_x;
 };
 
 #endif

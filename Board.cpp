@@ -1,9 +1,12 @@
 #include "Board.h"
 
-Board::Board()
+Board::Board():
+curr_y(1),
+curr_x(2)
 {
     initscr();
     noecho();
+    draw_board();
 }
 
 Board::~Board()
