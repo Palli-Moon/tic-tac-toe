@@ -26,4 +26,6 @@ void Board::draw_board()
             mvaddch(5, i, '|');
         }
     }
+    move(1, 2);
+    refresh();
 }
