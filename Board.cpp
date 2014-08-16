@@ -2,7 +2,9 @@
 
 Board::Board():
 curr_y(1),
-curr_x(2)
+curr_x(2),
+HOR_MOVE_SPACES(4),
+VER_MOVE_SPACES(2)
 {
     initscr();
     noecho();
@@ -35,4 +37,23 @@ void Board::draw_board()
 
 void Board::move_cursor(direction dir)
 {
+    switch (dir)
+    {
+        case LEFT:
+            curr_x -= HOR_MOVE_SPACES;
+            break;
+        case RIGHT:
+            curr_x += HOR_MOVE_SPACES;
+            break;
+        case UP:
+            curr_y -= VER_MOVE_SPACES;
+            break;
+        case DOWN:
+            curr_y += VER_MOVE_SPACES;
+            break;
+        default:
+            break;
+    }
+    move(curr_y, curr_x);
+    refresh();
 }
