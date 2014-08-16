@@ -29,3 +29,7 @@ void Board::draw_board()
     move(1, 2);
     refresh();
 }
+
+void Board::move_cursor(direction dir)
+{
+}
