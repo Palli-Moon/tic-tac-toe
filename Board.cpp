@@ -1,8 +1,10 @@
 #include "Board.h"
 
 Board::Board():
-curr_y(1),
-curr_x(2),
+curr_y(0),
+curr_x(0),
+Y_OFFSET(1),
+X_OFFSET(2),
 HOR_MOVE_SPACES(4),
 VER_MOVE_SPACES(2)
 {
@@ -31,7 +33,7 @@ void Board::draw_board()
             mvaddch(5, i, '|');
         }
     }
-    move(1, 2);
+    move(Y_OFFSET, X_OFFSET);
     refresh();
 }
 
@@ -40,20 +42,21 @@ void Board::move_cursor(direction dir)
     switch (dir)
     {
         case LEFT:
-            curr_x -= HOR_MOVE_SPACES;
+            curr_x--;
             break;
         case RIGHT:
-            curr_x += HOR_MOVE_SPACES;
+            curr_x++;
             break;
         case UP:
-            curr_y -= VER_MOVE_SPACES;
+            curr_y--;
             break;
         case DOWN:
-            curr_y += VER_MOVE_SPACES;
+            curr_y++;
             break;
         default:
             break;
     }
-    move(curr_y, curr_x);
+    move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
+         (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     refresh();
 }
