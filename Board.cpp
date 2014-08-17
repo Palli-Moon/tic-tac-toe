@@ -1,13 +1,20 @@
 #include "Board.h"
 
 Board::Board():
-curr_y(0),
-curr_x(0),
 Y_OFFSET(1),
 X_OFFSET(2),
 HOR_MOVE_SPACES(4),
-VER_MOVE_SPACES(2)
+VER_MOVE_SPACES(2),
+curr_y(0),
+curr_x(0)
 {
+    for (int i = 0; i < 3; ++i)
+    {
+        for (int j = 0; j < 3; ++j)
+        {
+            marks[i][j] = 0;
+        }
+    }
     initscr();
     noecho();
     draw_board();

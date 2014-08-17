@@ -20,11 +20,12 @@ public:
 private:
     void draw_board();
 
-    int curr_y, curr_x;
     int const Y_OFFSET;
     int const X_OFFSET;
     int const HOR_MOVE_SPACES;
     int const VER_MOVE_SPACES;
+    int curr_y, curr_x;
+    int marks[3][3];
 };
 
 #endif
