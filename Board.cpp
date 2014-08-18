@@ -44,7 +44,7 @@ void Board::draw_board()
     refresh();
 }
 
-void Board::move_cursor(direction dir)
+void Board::move_cursor(Direction dir)
 {
     switch (dir)
     {

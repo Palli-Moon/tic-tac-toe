@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 
-enum direction
+enum Direction
 {
     LEFT,
     RIGHT,
@@ -16,7 +16,7 @@ class Board
 public:
     Board();
     ~Board();
-    void move_cursor(direction dir);
+    void move_cursor(Direction dir);
 private:
     void draw_board();
 
