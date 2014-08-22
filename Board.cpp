@@ -67,3 +67,9 @@ void Board::move_cursor(Direction dir)
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     refresh();
 }
+
+void Board::make_mark(char mark)
+{
+    mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
+            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
+}

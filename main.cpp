@@ -13,6 +13,8 @@ int main()
     b.move_cursor(DOWN);
     b.move_cursor(DOWN);
     b.move_cursor(DOWN);
+    b.make_mark('x');
+    b.move_cursor(LEFT);
 
     getch();
     return 0;

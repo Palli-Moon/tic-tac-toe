@@ -17,6 +17,7 @@ public:
     Board();
     ~Board();
     void move_cursor(Direction dir);
+    void make_mark(char mark);
 private:
     void draw_board();
 
