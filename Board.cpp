@@ -49,13 +49,13 @@ void Board::move_cursor(Direction dir)
     switch (dir)
     {
         case LEFT:
-            if (curr_x > 1) curr_x--;
+            if (curr_x > 0) curr_x--;
             break;
         case RIGHT:
             if (curr_x < 2) curr_x++;
             break;
         case UP:
-            if (curr_y > 1) curr_y--;
+            if (curr_y > 0) curr_y--;
             break;
         case DOWN:
             if (curr_y < 2) curr_y++;
