@@ -14,6 +14,9 @@ int main()
     b.move_cursor(DOWN);
     b.move_cursor(DOWN);
     b.make_mark('x');
+    b.move_cursor(UP);
+    b.move_cursor(LEFT);
+    b.make_mark('o');
 
     getch();
     return 0;
