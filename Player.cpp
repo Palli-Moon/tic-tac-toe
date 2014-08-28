@@ -28,6 +28,10 @@ void Player::get_command()
         case 's':
             board->move_cursor(DOWN);
             break;
+        case KEY_ENTER:
+        case ' ':
+            board->make_mark('o');
+            break;
     }
     refresh();
 }
