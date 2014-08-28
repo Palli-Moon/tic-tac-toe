@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include "Board.h"
+#include "Player.h"
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
     b.move_cursor(UP);
     b.move_cursor(LEFT);
     b.make_mark('o');
+    Player p(b);
 
     getch();
     return 0;
