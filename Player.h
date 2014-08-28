@@ -8,6 +8,9 @@ class Player
 {
 public:
     Player(Board &b);
+    void get_command();
+private:
+    Board *board;
 };
 
 #endif

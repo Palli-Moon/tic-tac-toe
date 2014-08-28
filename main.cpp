@@ -19,6 +19,7 @@ int main()
     b.move_cursor(LEFT);
     b.make_mark('o');
     Player p(b);
+    while (true) p.get_command();
 
     getch();
     return 0;
