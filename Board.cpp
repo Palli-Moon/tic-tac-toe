@@ -17,6 +17,7 @@ curr_x(0)
     }
     initscr();
     noecho();
+    cbreak();
     draw_board();
 }
 
