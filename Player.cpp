@@ -1,8 +1,12 @@
 #include "Player.h"
 
+int Player::instances = 0;
+
 Player::Player(Board &b)
 {
     board = &b;
+    instances++;
+    player_num = instances;
 }
 
 void Player::get_command()
@@ -30,8 +34,8 @@ void Player::get_command()
             break;
         case KEY_ENTER:
         case ' ':
-            board->make_mark('o');
+            board->make_mark(1);
             break;
     }
-    refresh();
 }
+
