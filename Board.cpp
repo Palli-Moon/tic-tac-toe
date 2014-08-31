@@ -69,10 +69,14 @@ void Board::move_cursor(Direction dir)
     refresh();
 }
 
-void Board::make_mark(char mark)
+void Board::make_mark(int player_num, char mark)
 {
-    mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
-            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
+    if (marks[curr_y][curr_x] == 0)
+    {
+        mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
+                (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
+        marks[curr_y][curr_x] = player_num;
+    }
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     refresh();
