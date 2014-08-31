@@ -30,15 +30,15 @@ void Board::draw_board()
 {
     for (int i = 1; i < 12; ++i)
     {
-        mvaddch(2, i, '-');
-        mvaddch(4, i, '-');
+        mvaddch(2, i, ACS_HLINE);
+        mvaddch(4, i, ACS_HLINE);
         if (i % 4 == 0)
         {
-            mvaddch(1, i, '|');
-            mvaddch(2, i, '+');
-            mvaddch(3, i, '|');
-            mvaddch(4, i, '+');
-            mvaddch(5, i, '|');
+            mvaddch(1, i, ACS_VLINE);
+            mvaddch(2, i, ACS_PLUS);
+            mvaddch(3, i, ACS_VLINE);
+            mvaddch(4, i, ACS_PLUS);
+            mvaddch(5, i, ACS_VLINE);
         }
     }
     move(Y_OFFSET, X_OFFSET);
@@ -69,15 +69,14 @@ void Board::move_cursor(Direction dir)
     refresh();
 }
 
-void Board::make_mark(int player_num, char mark)
+bool Board::make_mark(int player_num, char mark)
 {
-    if (marks[curr_y][curr_x] == 0)
-    {
-        mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
-                (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
-        marks[curr_y][curr_x] = player_num;
-    }
+    if (marks[curr_y][curr_x] != 0) return false;
+    mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
+            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
+    marks[curr_y][curr_x] = player_num;
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     refresh();
+    return true;
 }
