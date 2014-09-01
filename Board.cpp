@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "Player.h"
 
 Board::Board():
 Y_OFFSET(1),
@@ -24,6 +25,18 @@ curr_x(0)
 Board::~Board()
 {
     endwin();
+}
+
+void Board::start_game_loop()
+{
+    Player P1(this);
+    Player P2(this);
+
+    while (true)
+    {
+        P1.get_command();
+        P2.get_command();
+    }
 }
 
 void Board::draw_board()

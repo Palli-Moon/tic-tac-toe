@@ -16,6 +16,7 @@ class Board
 public:
     Board();
     ~Board();
+    void start_game_loop();
     void move_cursor(Direction dir);
     bool make_mark(int player_num, char mark);
 private:

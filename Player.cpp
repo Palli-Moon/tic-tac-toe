@@ -2,9 +2,9 @@
 
 int Player::instances = 0;
 
-Player::Player(Board &b)
+Player::Player(Board* b)
 {
-    board = &b;
+    board = b;
     instances++;
     player_num = instances;
     if (player_num == 1) mark = 'x';
