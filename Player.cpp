@@ -2,7 +2,7 @@
 
 int Player::instances = 0;
 
-Player::Player(Board* b)
+Player::Player(Board *b)
 {
     board = b;
     instances++;
