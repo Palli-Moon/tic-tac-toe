@@ -7,7 +7,8 @@ X_OFFSET(2),
 HOR_MOVE_SPACES(4),
 VER_MOVE_SPACES(2),
 curr_y(0),
-curr_x(0)
+curr_x(0),
+num_of_marks(0)
 {
     for (int i = 0; i < 3; ++i)
     {
@@ -35,6 +36,7 @@ void Board::start_game_loop()
     while (true)
     {
         P1.get_command();
+        if (num_of_marks > 8) return;
         P2.get_command();
     }
 }
@@ -91,5 +93,22 @@ bool Board::make_mark(int player_num, char mark)
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     refresh();
+    num_of_marks++;
     return true;
+}
+
+int Board::check_if_win()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if (marks[0][i] == marks[1][i] &&
+            marks[1][i] == marks[2][i]) return marks[0][i];
+        if (marks[i][0] == marks[i][1] &&
+            marks[i][1] == marks[i][2]) return marks[i][0];
+    } 
+    if (marks[0][0] == marks[1][1] &&
+        marks[1][1] == marks[2][2]) return marks[0][0];
+    if (marks[0][2] == marks[1][1] &&
+        marks[1][1] == marks[0][2]) return marks[0][2];
+    return 0;
 }

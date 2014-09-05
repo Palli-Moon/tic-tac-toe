@@ -19,6 +19,7 @@ public:
     void start_game_loop();
     void move_cursor(Direction dir);
     bool make_mark(int player_num, char mark);
+    int check_if_win();
 private:
     void draw_board();
 
@@ -27,6 +28,7 @@ private:
     int const HOR_MOVE_SPACES;
     int const VER_MOVE_SPACES;
     int curr_y, curr_x;
+    int num_of_marks;
     int marks[3][3];
 };
 
