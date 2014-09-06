@@ -20,6 +20,7 @@ public:
     void move_cursor(Direction dir);
     bool make_mark(int player_num, char mark);
     int check_if_win();
+    void return_cursor();
 private:
     void draw_board();
 

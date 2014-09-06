@@ -1,5 +1,6 @@
 #include "Board.h"
 #include "Player.h"
+#include "Status.h"
 
 Board::Board():
 Y_OFFSET(1),
@@ -32,10 +33,14 @@ void Board::start_game_loop()
 {
     Player P1(this);
     Player P2(this);
+    Status St(this);
 
     while (true)
     {
+        St.print_status();
+        if (num_of_marks > 8) return;
         P1.get_command();
+        St.print_status();
         if (num_of_marks > 8) return;
         P2.get_command();
     }
@@ -92,8 +97,8 @@ bool Board::make_mark(int player_num, char mark)
     marks[curr_y][curr_x] = player_num;
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
-    refresh();
     num_of_marks++;
+    refresh();
     return true;
 }
 
@@ -111,4 +116,10 @@ int Board::check_if_win()
     if (marks[0][2] == marks[1][1] &&
         marks[1][1] == marks[0][2]) return marks[0][2];
     return 0;
+}
+
+void Board::return_cursor()
+{
+    move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
+         (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
 }
