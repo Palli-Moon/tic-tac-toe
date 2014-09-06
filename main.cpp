@@ -3,9 +3,8 @@
 
 int main()
 {
-    
-    Board b;
-    b.start_game_loop();
+    //Board b;
+    //b.start_game_loop();
 
     getch();
     return 0;
