@@ -42,4 +42,3 @@ void Player::get_command()
         }
     }
 }
-
