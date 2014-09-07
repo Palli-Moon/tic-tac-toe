@@ -39,7 +39,7 @@ void Player::get_command()
                 break;
             case KEY_ENTER:
             case ' ':
-                if (board->make_mark(player_num, mark)) return;
+                if (board->make_mark(this, mark)) return;
         }
     }
 }

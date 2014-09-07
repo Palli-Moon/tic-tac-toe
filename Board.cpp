@@ -87,16 +87,16 @@ void Board::move_cursor(Direction dir)
     refresh();
 }
 
-bool Board::make_mark(int player_num, char mark)
+bool Board::make_mark(Player *player, char mark)
 {
     if (marks[curr_y][curr_x] != 0) return false;
     mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
-            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
-    marks[curr_y][curr_x] = player_num;
+            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, player->mark);
+    marks[curr_y][curr_x] = player->player_num;
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     num_of_marks++;
-    player_num == 1 ? player_turn = 2 : player_turn = 1;
+    player->player_num == 1 ? player_turn = 2 : player_turn = 1;
     refresh();
     return true;
 }
