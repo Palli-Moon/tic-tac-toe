@@ -1,4 +1,5 @@
 #include "Status.h"
+#include "Board.h"
 
 Status::Status(Board *b):
 Y_OFFSET(1),

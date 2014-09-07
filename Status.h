@@ -2,7 +2,8 @@
 #define STATUS_H
 
 #include <ncurses.h>
-#include "Board.h"
+
+class Board;
 
 class Status
 {
