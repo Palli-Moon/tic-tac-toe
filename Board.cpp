@@ -3,6 +3,7 @@
 #include "Status.h"
 
 Board::Board():
+player_turn(1),
 Y_OFFSET(1),
 X_OFFSET(2),
 HOR_MOVE_SPACES(4),
@@ -39,10 +40,7 @@ void Board::start_game_loop()
     {
         St.print_status();
         if (num_of_marks > 8) return;
-        P1.get_command();
-        St.print_status();
-        if (num_of_marks > 8) return;
-        P2.get_command();
+        player_turn == 1 ? P1.get_command() : P2.get_command();
     }
 }
 
@@ -98,6 +96,7 @@ bool Board::make_mark(int player_num, char mark)
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
     num_of_marks++;
+    player_num == 1 ? player_turn = 2 : player_turn = 1;
     refresh();
     return true;
 }

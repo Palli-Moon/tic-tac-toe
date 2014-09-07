@@ -12,8 +12,8 @@ public:
 private:
     Board *board;
 
-    int const X_OFFSET;
     int const Y_OFFSET;
+    int const X_OFFSET;
 };
 
 #endif
