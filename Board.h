@@ -11,6 +11,8 @@ enum Direction
     DOWN
 };
 
+class Player;
+
 class Board
 {
 public:
@@ -18,10 +20,13 @@ public:
     ~Board();
     void start_game_loop();
     void move_cursor(Direction dir);
-    bool make_mark(int player_num, char mark);
-    int check_if_win();
+    bool make_mark(Player *player, char mark);
+    void return_cursor();
+
+    int player_turn;
 private:
     void draw_board();
+    int check_if_win();
 
     int const Y_OFFSET;
     int const X_OFFSET;

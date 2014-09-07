@@ -2,7 +2,9 @@
 #define PLAYER_H
 
 #include <ncurses.h>
-#include "Board.h"
+
+// Forward declaration
+class Board;
 
 class Player 
 {

@@ -1,7 +1,9 @@
 #include "Board.h"
 #include "Player.h"
+#include "Status.h"
 
 Board::Board():
+player_turn(1),
 Y_OFFSET(1),
 X_OFFSET(2),
 HOR_MOVE_SPACES(4),
@@ -32,12 +34,13 @@ void Board::start_game_loop()
 {
     Player P1(this);
     Player P2(this);
+    Status St(this);
 
     while (true)
     {
-        P1.get_command();
+        St.print_status();
         if (num_of_marks > 8) return;
-        P2.get_command();
+        player_turn == 1 ? P1.get_command() : P2.get_command();
     }
 }
 
@@ -84,16 +87,17 @@ void Board::move_cursor(Direction dir)
     refresh();
 }
 
-bool Board::make_mark(int player_num, char mark)
+bool Board::make_mark(Player *player, char mark)
 {
     if (marks[curr_y][curr_x] != 0) return false;
     mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
-            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, mark);
-    marks[curr_y][curr_x] = player_num;
+            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, player->mark);
+    marks[curr_y][curr_x] = player->player_num;
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
-    refresh();
     num_of_marks++;
+    player->player_num == 1 ? player_turn = 2 : player_turn = 1;
+    refresh();
     return true;
 }
 
@@ -111,4 +115,10 @@ int Board::check_if_win()
     if (marks[0][2] == marks[1][1] &&
         marks[1][1] == marks[0][2]) return marks[0][2];
     return 0;
+}
+
+void Board::return_cursor()
+{
+    move((curr_y * VER_MOVE_SPACES) + Y_OFFSET, 
+         (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
 }
