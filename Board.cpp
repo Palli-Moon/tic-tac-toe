@@ -36,10 +36,9 @@ void Board::start_game_loop()
     Player P2(this);
     Status St(this);
 
-    while (true)
+    while (num_of_marks < 9)
     {
         St.print_status();
-        if (num_of_marks > 8) return;
         player_turn == 1 ? P1.get_command() : P2.get_command();
     }
 }
