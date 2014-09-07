@@ -19,28 +19,23 @@ num_of_marks(0)
             marks[i][j] = 0;
         }
     }
-    initscr();
-    noecho();
-    cbreak();
+    ncurses_init();
     draw_board();
 }
 
 Board::~Board()
 {
+    // close ncurses
     endwin();
 }
 
-void Board::start_game_loop()
+void Board::ncurses_init()
 {
-    Player P1(this);
-    Player P2(this);
-    Status St(this);
+    initscr();
+    cbreak();
+    noecho();
+    keypad(stdscr, true);
 
-    while (num_of_marks < 9)
-    {
-        St.print_status();
-        player_turn == 1 ? P1.get_command() : P2.get_command();
-    }
 }
 
 void Board::draw_board()
@@ -60,6 +55,35 @@ void Board::draw_board()
     }
     move(Y_OFFSET, X_OFFSET);
     refresh();
+}
+
+int Board::check_if_win()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if (marks[0][i] == marks[1][i] &&
+            marks[1][i] == marks[2][i]) return marks[0][i];
+        if (marks[i][0] == marks[i][1] &&
+            marks[i][1] == marks[i][2]) return marks[i][0];
+    } 
+    if (marks[0][0] == marks[1][1] &&
+        marks[1][1] == marks[2][2]) return marks[0][0];
+    if (marks[0][2] == marks[1][1] &&
+        marks[1][1] == marks[0][2]) return marks[0][2];
+    return 0;
+}
+
+void Board::start_game_loop()
+{
+    Player P1(this);
+    Player P2(this);
+    Status St(this);
+
+    while (num_of_marks < 9)
+    {
+        St.print_status();
+        player_turn == 1 ? P1.get_command() : P2.get_command();
+    }
 }
 
 void Board::move_cursor(Direction dir)
@@ -98,22 +122,6 @@ bool Board::make_mark(Player *player, char mark)
     player->player_num == 1 ? player_turn = 2 : player_turn = 1;
     refresh();
     return true;
-}
-
-int Board::check_if_win()
-{
-    for (int i = 0; i < 3; i++)
-    {
-        if (marks[0][i] == marks[1][i] &&
-            marks[1][i] == marks[2][i]) return marks[0][i];
-        if (marks[i][0] == marks[i][1] &&
-            marks[i][1] == marks[i][2]) return marks[i][0];
-    } 
-    if (marks[0][0] == marks[1][1] &&
-        marks[1][1] == marks[2][2]) return marks[0][0];
-    if (marks[0][2] == marks[1][1] &&
-        marks[1][1] == marks[0][2]) return marks[0][2];
-    return 0;
 }
 
 void Board::return_cursor()

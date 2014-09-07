@@ -14,7 +14,6 @@ Player::Player(Board *b)
 
 void Player::get_command()
 {
-    keypad(stdscr, true);
     wchar_t ch;
     while(true)
     {

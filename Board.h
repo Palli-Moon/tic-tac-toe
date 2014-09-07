@@ -25,6 +25,7 @@ public:
 
     int player_turn;
 private:
+    void ncurses_init();
     void draw_board();
     int check_if_win();
 
