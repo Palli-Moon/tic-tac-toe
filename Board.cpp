@@ -62,14 +62,18 @@ int Board::check_if_win()
     for (int i = 0; i < 3; i++)
     {
         if (marks[0][i] == marks[1][i] &&
-            marks[1][i] == marks[2][i]) return marks[0][i];
+            marks[1][i] == marks[2][i]) 
+            if (marks[0][i] != 0) return marks[0][i];
         if (marks[i][0] == marks[i][1] &&
-            marks[i][1] == marks[i][2]) return marks[i][0];
+            marks[i][1] == marks[i][2]) 
+            if (marks[i][0] != 0) return marks[i][0];
     } 
     if (marks[0][0] == marks[1][1] &&
-        marks[1][1] == marks[2][2]) return marks[0][0];
+        marks[1][1] == marks[2][2]) 
+        if (marks[0][0] != 0) return marks[0][0];
     if (marks[0][2] == marks[1][1] &&
-        marks[1][1] == marks[0][2]) return marks[0][2];
+        marks[1][1] == marks[2][0]) 
+        if (marks[0][2] != 0) return marks[0][2];
     return 0;
 }
 
@@ -79,7 +83,7 @@ void Board::start_game_loop()
     Player P2(this);
     Status St(this);
 
-    while (num_of_marks < 9)
+    while (check_if_win() == 0 && num_of_marks < 9)
     {
         St.print_status();
         player_turn == 1 ? P1.get_command() : P2.get_command();
