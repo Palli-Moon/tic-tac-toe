@@ -11,10 +11,10 @@ X_OFFSET(15)
 void Status::print_status()
 {
     mvprintw(Y_OFFSET, X_OFFSET, "Player: %i", board->player_turn);
-    mvprintw(Y_OFFSET + 1, X_OFFSET, "");
-    mvprintw(Y_OFFSET + 2, X_OFFSET, "");
-    mvprintw(Y_OFFSET + 3, X_OFFSET, "");
-    mvprintw(Y_OFFSET + 4, X_OFFSET, "");
+    if (board->check_if_win() != 0)
+    {
+        mvprintw(Y_OFFSET + 2, X_OFFSET, "Player has won");
+    }
     board->return_cursor();
     refresh();
 }

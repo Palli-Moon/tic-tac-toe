@@ -1,5 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef BOARD_H_
+#define BOARD_H_
 
 #include <ncurses.h>
 
@@ -22,12 +22,12 @@ public:
     void move_cursor(Direction dir);
     bool make_mark(Player *player, char mark);
     void return_cursor();
+    int check_if_win();
 
     int player_turn;
 private:
     void ncurses_init();
     void draw_board();
-    int check_if_win();
 
     int const Y_OFFSET;
     int const X_OFFSET;
@@ -38,4 +38,4 @@ private:
     int marks[3][3];
 };
 
-#endif
+#endif  // BOARD_H_

@@ -15,7 +15,7 @@ Player::Player(Board *b)
 void Player::get_command()
 {
     wchar_t ch;
-    while(true)
+    while (true)
     {
         ch = getch();
         switch (ch)

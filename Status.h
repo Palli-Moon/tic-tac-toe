@@ -1,5 +1,5 @@
-#ifndef STATUS_H
-#define STATUS_H
+#ifndef STATUS_H_
+#define STATUS_H_
 
 #include <ncurses.h>
 
@@ -17,4 +17,4 @@ private:
     int const X_OFFSET;
 };
 
-#endif
+#endif  // STATUS_H_

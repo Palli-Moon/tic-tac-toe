@@ -1,12 +1,12 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER_H_
+#define PLAYER_H_
 
 #include <ncurses.h>
 
 // Forward declaration
 class Board;
 
-class Player 
+class Player
 {
 public:
     Player(Board *b);
@@ -19,4 +19,4 @@ private:
     static int instances;
 };
 
-#endif
+#endif  // PLAYER_H_
