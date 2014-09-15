@@ -4,10 +4,6 @@
 
 Board::Board():
 player_turn(1),
-Y_OFFSET(1),
-X_OFFSET(2),
-HOR_MOVE_SPACES(4),
-VER_MOVE_SPACES(2),
 curr_y(0),
 curr_x(0),
 num_of_marks(0)
@@ -27,33 +23,6 @@ Board::~Board()
 {
     // close ncurses
     endwin();
-}
-
-void Board::ncurses_init()
-{
-    initscr();
-    cbreak();
-    noecho();
-    keypad(stdscr, true);
-}
-
-void Board::draw_board()
-{
-    for (int i = 1; i < 12; ++i)
-    {
-        mvaddch(2, i, ACS_HLINE);
-        mvaddch(4, i, ACS_HLINE);
-        if (i % 4 == 0)
-        {
-            mvaddch(1, i, ACS_VLINE);
-            mvaddch(2, i, ACS_PLUS);
-            mvaddch(3, i, ACS_VLINE);
-            mvaddch(4, i, ACS_PLUS);
-            mvaddch(5, i, ACS_VLINE);
-        }
-    }
-    move(Y_OFFSET, X_OFFSET);
-    refresh();
 }
 
 int Board::check_if_win()
@@ -82,6 +51,7 @@ void Board::start_game_loop()
     Player p2(this);
     Status st(this);
 
+    st.print_status();
     while (check_if_win() == 0 && num_of_marks < 9)
     {
         player_turn == 1 ? p1.get_command() : p2.get_command();
@@ -131,4 +101,31 @@ void Board::return_cursor()
 {
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET,
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
+}
+
+void Board::ncurses_init()
+{
+    initscr();
+    cbreak();
+    noecho();
+    keypad(stdscr, true);
+}
+
+void Board::draw_board()
+{
+    for (int i = 1; i < 12; ++i)
+    {
+        mvaddch(2, i, ACS_HLINE);
+        mvaddch(4, i, ACS_HLINE);
+        if (i % 4 == 0)
+        {
+            mvaddch(1, i, ACS_VLINE);
+            mvaddch(2, i, ACS_PLUS);
+            mvaddch(3, i, ACS_VLINE);
+            mvaddch(4, i, ACS_PLUS);
+            mvaddch(5, i, ACS_VLINE);
+        }
+    }
+    move(Y_OFFSET, X_OFFSET);
+    refresh();
 }

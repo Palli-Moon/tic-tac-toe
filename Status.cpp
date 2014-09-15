@@ -1,9 +1,7 @@
 #include "Status.h"
 #include "Board.h"
 
-Status::Status(Board *b):
-Y_OFFSET(1),
-X_OFFSET(15)
+Status::Status(Board *b)
 {
     board = b;
 }

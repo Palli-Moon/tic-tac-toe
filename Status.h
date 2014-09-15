@@ -11,10 +11,10 @@ public:
     Status(Board *b);
     void print_status();
 private:
-    Board *board;
+    static const int Y_OFFSET = 1;
+    static const int X_OFFSET = 15;
 
-    int const Y_OFFSET;
-    int const X_OFFSET;
+    Board *board;
 };
 
 #endif  // STATUS_H_
