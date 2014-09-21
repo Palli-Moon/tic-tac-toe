@@ -10,6 +10,7 @@ class Status
 public:
     explicit Status(Board *b);
     void print_status();
+
 private:
     static const int Y_OFFSET = 1;
     static const int X_OFFSET = 15;

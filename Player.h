@@ -14,6 +14,7 @@ public:
     
     int player_num;
     char mark;
+
 private:
     Board *board;
     static int instances;
