@@ -24,7 +24,8 @@ public:
     bool make_mark(Player *player, char mark);
     void return_cursor();
 
-    int player_turn;
+    int get_player_turn() { return player_turn; }
+
 
 private:
     static const int Y_OFFSET = 1;
@@ -35,6 +36,7 @@ private:
     void ncurses_init();
     void draw_board();
 
+    int player_turn;
     int curr_y, curr_x;
     int num_of_marks;
     int marks[3][3];

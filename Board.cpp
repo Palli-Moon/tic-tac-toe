@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "Status.h"
 
-Board::Board():
+Board::Board() :
 player_turn(1),
 curr_y(0),
 curr_x(0),
@@ -27,11 +27,12 @@ Board::~Board()
 
 int Board::check_if_win()
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 3; ++i)
     {
         if (marks[0][i] == marks[1][i] &&
             marks[1][i] == marks[2][i])
             if (marks[0][i] != 0) return marks[0][i];
+
         if (marks[i][0] == marks[i][1] &&
             marks[i][1] == marks[i][2])
             if (marks[i][0] != 0) return marks[i][0];
@@ -39,9 +40,11 @@ int Board::check_if_win()
     if (marks[0][0] == marks[1][1] &&
         marks[1][1] == marks[2][2])
         if (marks[0][0] != 0) return marks[0][0];
+
     if (marks[0][2] == marks[1][1] &&
         marks[1][1] == marks[2][0])
         if (marks[0][2] != 0) return marks[0][2];
+
     return 0;
 }
 
@@ -86,11 +89,15 @@ void Board::move_cursor(Direction dir)
 bool Board::make_mark(Player *player, char mark)
 {
     if (marks[curr_y][curr_x] != 0) return false;
+
     mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET,
             (curr_x * HOR_MOVE_SPACES) + X_OFFSET, player->mark);
+
     marks[curr_y][curr_x] = player->player_num;
+
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET,
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
+
     num_of_marks++;
     player->player_num == 1 ? player_turn = 2 : player_turn = 1;
     refresh();
