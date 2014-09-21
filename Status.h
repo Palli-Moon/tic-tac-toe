@@ -8,7 +8,7 @@ class Board;
 class Status
 {
 public:
-    Status(Board *b);
+    explicit Status(Board *b);
     void print_status();
 private:
     static const int Y_OFFSET = 1;

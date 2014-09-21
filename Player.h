@@ -9,7 +9,7 @@ class Board;
 class Player
 {
 public:
-    Player(Board *b);
+    explicit Player(Board *b); // 1 arg constructors should be explicit
     void get_command();
     
     int player_num;
