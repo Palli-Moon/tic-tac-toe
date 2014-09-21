@@ -26,7 +26,6 @@ public:
 
     int get_player_turn() { return player_turn; }
 
-
 private:
     static const int Y_OFFSET = 1;
     static const int X_OFFSET = 2;

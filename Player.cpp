@@ -8,8 +8,8 @@ Player::Player(Board *b)
     board = b;
     instances++;
     player_num = instances;
-    if (player_num == 1) mark = 'x';
-    if (player_num == 2) mark = 'o';
+    if (player_num == 1) player_mark = 'x';
+    if (player_num == 2) player_mark = 'o';
 }
 
 void Player::get_command()
@@ -38,7 +38,7 @@ void Player::get_command()
                 break;
             case KEY_ENTER:
             case ' ':
-                if (board->make_mark(this, mark)) return;
+                if (board->make_mark(this, player_mark)) return;
         }
     }
 }

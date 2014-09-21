@@ -91,15 +91,15 @@ bool Board::make_mark(Player *player, char mark)
     if (marks[curr_y][curr_x] != 0) return false;
 
     mvaddch((curr_y * VER_MOVE_SPACES) + Y_OFFSET,
-            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, player->mark);
+            (curr_x * HOR_MOVE_SPACES) + X_OFFSET, player->get_player_mark());
 
-    marks[curr_y][curr_x] = player->player_num;
+    marks[curr_y][curr_x] = player->get_player_num();
 
     move((curr_y * VER_MOVE_SPACES) + Y_OFFSET,
          (curr_x * HOR_MOVE_SPACES) + X_OFFSET);
 
     num_of_marks++;
-    player->player_num == 1 ? player_turn = 2 : player_turn = 1;
+    player->get_player_num() == 1 ? player_turn = 2 : player_turn = 1;
     refresh();
     return true;
 }
